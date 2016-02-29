@@ -27,7 +27,7 @@ if [ ! -e '/opt/bin/opkg' ] ; then
     mkdir -p /opt/etc/init.d
     dl http://pkg.entware.net/binaries/mipsel/installer/rc.func /opt/etc/init.d/rc.func
     dl http://pkg.entware.net/binaries/mipsel/installer/rc.unslung /opt/etc/init.d/rc.unslung x
-    sed -i 's|/opt/bin/find|/opt/bin/find|g' /opt/etc/init.d/rc.unslung
+    sed -i 's|/opt/bin/find|find|g' /opt/etc/init.d/rc.unslung
     # This prevents f\w to install Entware
     mkdir -p /opt/bin
     touch /opt/bin/opkg
