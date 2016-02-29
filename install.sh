@@ -47,6 +47,6 @@ fi
 rm debian_clean.tgz
 echo 'ssh' > /opt/debian/chroot-services.list
 
-echo -n 'The Debian service from /opt/debian/chroot-services.list will be started automatically at boot time. You may log into Debian environment via SSH root:debian@192.168.0.1:65022. Do you wish to start it now? [y/n]: '
+echo -n 'The Debian services from /opt/debian/chroot-services.list will be started automatically at boot time. You may log into Debian environment via SSH root:debian@192.168.0.1:65022. Do you wish to start it now? [y/n]: '
 read yn
 [ "$yn" = "y" ] && /opt/etc/init.d/S99debian start
