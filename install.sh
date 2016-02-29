@@ -3,32 +3,37 @@
 cd /opt
 
 dl () {
-  # $1 - URL to download
-  # $2 - place to store
-  # $3 - 'x' if should be executable
-  echo -n "Downloading $2... "
-  wget -q $1 -O $2
-  if [ $? -eq 0 ] ; then
-    echo "success!"
-  else
-    echo "failed!"
+    # $1 - URL to download
+    # $2 - place to store
+    # $3 - 'x' if should be executable
+    echo -n "Downloading $2... "
+    wget -q $1 -O $2
+    if [ $? -eq 0 ] ; then
+	echo "success!"
+    else
+	echo "failed!"
     exit 1
-  fi
-  [ -z "$3" ] || chmod +x $2
+    fi
+    [ -z "$3" ] || chmod +x $2
 }
 
-mkdir -p /opt/etc/init.d
-dl http://pkg.entware.net/binaries/mipsel/installer/rc.func /opt/etc/init.d/rc.func
-dl http://pkg.entware.net/binaries/mipsel/installer/rc.unslung /opt/etc/init.d/rc.unslung x
+if [ ! -e '/opt/bin/opkg' ] ; then
+    # Entware is not installed, install and start scripts
+    mkdir -p /opt/etc/init.d
+    dl http://pkg.entware.net/binaries/mipsel/installer/rc.func /opt/etc/init.d/rc.func
+    dl http://pkg.entware.net/binaries/mipsel/installer/rc.unslung /opt/etc/init.d/rc.unslung x
+    sed -i 's|/opt/bin/find|/opt/bin/find|g' /opt/etc/init.d/rc.unslung
+    # This prevents f\w to install Entware
+    mkdir -p /opt/bin
+    touch /opt/bin/opkg
+fi
+
 dl https://raw.githubusercontent.com/ryzhovau/padavan-debian/master/opt/etc/init.d/S99debian /opt/etc/init.d/S99debian x
 dl http://files.ryzhov-al.ru/Routers/chroot-debian/debian_clean.tgz /opt/debian_clean.tgz
 
-# This prevents f\w to install Entware if it wasn't installed before
-mkdir -p /opt/bin
-touch /opt/bin/opkg
-
-tar -xvzf debian_clean.tgz && rm debian_clean.tgz
-echo ssh > /opt/debian/chroot-services.list
+echo 'Unpacking Debian environment...'
+tar -xzf debian_clean.tgz && rm debian_clean.tgz
+echo 'ssh' > /opt/debian/chroot-services.list
 
 cat << EOF
 
