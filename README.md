@@ -10,13 +10,26 @@ Clean Debian environment takes ~300MB. SWAP usage is also recommended (especiall
 
 ## Installation
 
-It takes few minutes to download and unpack ~50MB archive. Log into router's SSH/telnet/serialconsole and type:
+It takes few minutes to download and unpack ~50MB archive. Log into router's SSH/telnet/serial console and type:
 ```
 wget https://raw.githubusercontent.com/ryzhovau/padavan-debian/master/install.sh
 sh install.sh
 ```
+If all goes as expected, you'll get:
+```
+Downloading /opt/etc/init.d/rc.func... success!
+Downloading /opt/etc/init.d/rc.unslung... success!
+Downloading /opt/etc/init.d/S99debian... success!
+Downloading /opt/debian_clean.tgz... success!
+Unpacking Debian environment... success!
+The Debian services from /opt/debian/chroot-services.list will be started automatically at boot time. You may log into Debian environment via SSH root:debian@192.168.0.1:65022. Do you wish to start it now? [y/n]: y
+Starting Debian services...
+[ ok ] Starting OpenBSD Secure Shell server: sshd.
+Done.
+```
 
-## Usage 
+
+## Usage
 
 Log into chroot'ed Debian environment by `root:debian@192.168.0.1:65022` where `192.168.0.1` is the IP address of router. You've got full blown Debian on board with all it's 40+ thousands packages! Let's install transmission as an example:
 ```
