@@ -33,7 +33,7 @@ if [ ! -e '/opt/bin/opkg' ] ; then
     touch /opt/bin/opkg
 fi
 
-dl https://raw.githubusercontent.com/ryzhovau/padavan-debian/master/opt/etc/init.d/S99debian /opt/etc/init.d/S99debian x
+dl https://raw.githubusercontent.com/DontBeAPadavan/chroot-debian/master/opt/etc/init.d/S99debian /opt/etc/init.d/S99debian x
 dl http://files.ryzhov-al.ru/Routers/chroot-debian/debian_clean.tgz /opt/debian_clean.tgz
 
 echo -n 'Unpacking Debian environment... '

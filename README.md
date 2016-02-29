@@ -12,7 +12,7 @@ Clean Debian environment takes ~300MB. SWAP usage is also recommended (especiall
 
 It takes few minutes to download and unpack ~50MB archive. Log into router's SSH/telnet/serial console and type:
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/ryzhovau/padavan-debian/master/install.sh
+wget --no-check-certificate https://raw.githubusercontent.com/DontBeAPadavan/chroot-debian/master/install.sh
 sh install.sh
 ```
 If all goes as expected, you'll get:
