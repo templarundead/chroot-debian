@@ -1,0 +1,32 @@
+# How to prepare minimal Debian environment from scratch.
+
+# 1st stage from linux PC
+sudo debootstrap --arch mipsel --foreign --variant=minbase--include=openssh-server stable debian ftp://ftp.debian.org/debian
+sudo tar -cvzf ./debian-stable-mipsel.tgz debian
+# now transfer debian-stable-mipsel.tgz to router.
+
+# 2nd stage from router
+cd /opt
+tar -xvzf debian-stable-mipsel.tgz
+mount /dev/ debian/dev
+mount /proc/ debian/proc
+mount /sys/ debian/sys
+LC_ALL=C LANGUAGE=C LANG=C chroot debian /debootstrap/debootstrap --second-stage
+sed -i 's|Port 22|Port 65022|g' debian/etc/ssh/sshd_config
+sed -i 's|PermitRootLogin without-password|PermitRootLogin yes|g' debian/etc/ssh/sshd_config
+cat > debian/usr/sbin/policy-rc.d <<EOF
+#!/bin/sh
+exit 101
+EOF
+chmod a+x debian/usr/sbin/policy-rc.d
+
+LC_ALL=C LANGUAGE=C LANG=C chroot debian /bin/bash
+passwd # set 'debian' paasword for root
+apt-get clean
+exit
+
+umount debian/dev
+umount debian/proc
+umount debian/sys
+rm rm debian/var/lib/apt/lists/*
+tar -cvzf debian_clean.tgz debian

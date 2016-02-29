@@ -26,7 +26,7 @@ start() {
 	for dir in dev dev/pts proc sys; do
 		mount -o bind /$dir $CHROOT_DIR/$dir
 	done
-	[ -z "$EXT_DIR" ] || mount -o bind $EXT_DIR $CHROOT_DIR/mnt
+	[ -z "$EXT_DIR" ] || mount -o bind $EXT_DIR $CHROOT_DIR/media
 	for item in $(cat $CHROOT_SERVICES_LIST); do
 		PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/sbin \
 		LC_ALL=C \
