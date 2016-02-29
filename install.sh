@@ -1,6 +1,9 @@
 #!/bin/sh
 
-cd /opt
+if [ -z $(nvram get help_enable) ] ; then
+    echo 'It works on Padavan firmware only, sorry. Exiting...'
+    exit 1
+fi
 
 dl () {
     # $1 - URL to download
@@ -16,6 +19,8 @@ dl () {
     fi
     [ -z "$3" ] || chmod +x $2
 }
+
+cd /opt
 
 if [ ! -e '/opt/bin/opkg' ] ; then
     # Entware is not installed, install and start scripts

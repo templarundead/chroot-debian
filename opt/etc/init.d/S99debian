@@ -49,6 +49,7 @@ stop() {
 		LANG=C \
 		chroot $CHROOT_DIR /etc/init.d/$item stop
 	done
+	umount $CHROOT_DIR/dev/pts
 	mount | grep $CHROOT_DIR | awk "{print \$3}" | xargs umount
 }
 
