@@ -10,7 +10,7 @@ dl () {
     # $2 - place to store
     # $3 - 'x' if should be executable
     echo -n "Downloading $2... "
-    wget -q $1 -O $2
+    wget -q --no-check-certificate $1 -O $2
     if [ $? -eq 0 ] ; then
 	echo 'success!'
     else

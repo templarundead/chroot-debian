@@ -28,5 +28,5 @@ exit
 umount debian/dev
 umount debian/proc
 umount debian/sys
-rm rm debian/var/lib/apt/lists/*
+rm debian/var/lib/apt/lists/*
 tar -cvzf debian_clean.tgz debian
