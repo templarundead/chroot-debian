@@ -8,7 +8,7 @@ CHROOT_DIR=/opt/debian
 # Leave commented if not needed
 EXT_DIR=/media
 
-CHROOT_SERVICES_LIST=/opt/etc/chroot-services.list
+CHROOT_SERVICES_LIST=$CHROOT_DIR/chroot-services.list
 if [ ! -e "$CHROOT_SERVICES_LIST" ]; then
 	echo "Please, define Debian services to start in $CHROOT_SERVICES_LIST first!"
 	echo 'One service per line. Hint: this is a script names from Debian /etc/init.d/'
