@@ -23,7 +23,7 @@ start() {
 		exit 1
 	fi
 	echo 'Starting Debian services...'
-	for dir in dev proc sys; do
+	for dir in dev dev/pts proc sys; do
 		mount -o bind /$dir $CHROOT_DIR/$dir
 	done
 	[ -z "$EXT_DIR" ] || mount -o bind $EXT_DIR $CHROOT_DIR/mnt
