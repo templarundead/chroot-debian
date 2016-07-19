@@ -1,7 +1,7 @@
 # How to prepare minimal Debian environment from scratch.
 
 # 1st stage from linux PC
-sudo debootstrap --arch mipsel --foreign --variant=minbase--include=openssh-server stable debian ftp://ftp.debian.org/debian
+sudo debootstrap --arch mipsel --foreign --variant=minbase --include=openssh-server stable debian ftp://ftp.debian.org/debian
 sudo tar -cvzf ./debian-stable-mipsel.tgz debian
 # now transfer debian-stable-mipsel.tgz to router.
 
