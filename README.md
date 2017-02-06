@@ -35,7 +35,7 @@ Log into chroot'ed Debian environment by `root:debian@192.168.0.1:65022` where `
 ```
 apt-get update
 apt-get install transmission-daemon
-echo 'transmission-daemon' > /chroot-services.list
+echo 'transmission-daemon' >> /chroot-services.list
 ```
 The last command adds transmssion to the list of Debian services, which is started at boot time. `transmission-daemon` is the script name from `/etc/init.d/<name>`.
 
