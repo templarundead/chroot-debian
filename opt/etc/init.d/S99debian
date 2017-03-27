@@ -28,7 +28,7 @@ start() {
 	done
 	[ -z "$EXT_DIR" ] || mount -o bind $EXT_DIR $CHROOT_DIR/media
 	for item in $(cat $CHROOT_SERVICES_LIST); do
-		PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/sbin \
+		PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/local/games:/usr/games:/usr/sbin \
 		LC_ALL=C \
 		LANGUAGE=C \
 		LANG=C \
@@ -43,7 +43,7 @@ stop() {
 	fi
 	echo 'Stopping Debian services...'
 	for item in $(cat $CHROOT_SERVICES_LIST); do
-		PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/sbin \
+		PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/local/games:/usr/games:/usr/sbin \
 		LC_ALL=C \
 		LANGUAGE=C \
 		LANG=C \
