@@ -37,14 +37,14 @@ dl https://raw.githubusercontent.com/DontBeAPadavan/chroot-debian/master/opt/etc
 dl https://github.com/templarundead/chroot-debian/raw/master/debian-stable-mipsel.tgz
 
 echo -n 'Unpacking Debian environment... '
-tar -xzf debian_clean.tgz
+tar -xzf debian-stable-mipsel.tgz
 if [ $? -eq 0 ] ; then
     echo 'success!'
 else
     echo 'failed!'
     exit 1
 fi
-rm debian_clean.tgz
+rm debian-stable-mipsel.tgz
 echo 'ssh' > /opt/debian/chroot-services.list
 
 echo -n 'The Debian services from /opt/debian/chroot-services.list will be started automatically at boot time. You may log into Debian environment via SSH root:debian@192.168.0.1:65022. Do you wish to start it now? [y/n]: '
