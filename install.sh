@@ -34,7 +34,7 @@ if [ ! -e '/opt/bin/opkg' ] ; then
 fi
 
 dl https://raw.githubusercontent.com/DontBeAPadavan/chroot-debian/master/opt/etc/init.d/S99debian /opt/etc/init.d/S99debian x
-dl https://github.com/templarundead/chroot-debian/raw/master/debian-stable-mipsel.tgz
+dl https://github.com/templarundead/chroot-debian/raw/master/debian-stable-mipsel.tgz /opt/debian-stable-mipsel.tgz
 
 echo -n 'Unpacking Debian environment... '
 tar -xzf debian-stable-mipsel.tgz
